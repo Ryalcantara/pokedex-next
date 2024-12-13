@@ -6,9 +6,25 @@ import {
 } from "@/app/api/api";
 import PokemonPagination from "../components/pagination/pagination";
 import Image from "next/image";
+// import { Metadata } from 'next';
 
-export default async function PokemonCard({ params }: { params: { id: string}}) {
-  const id = parseInt(params.id);
+// export interface PageProps {
+//   params: { id: number };
+//   searchParams?: Record<string, string | string[] | undefined>;
+// }
+
+// export async function generateMetadata(
+//   { params }: PageProps
+// ): Promise<Metadata> {
+//   return {
+//     title: `Pokemon #${params.id}`
+//   }
+// }
+
+
+export default async function PokemonCard({params}: {params: Promise<{ id: number }>}) {
+  const {id} =  await params;
+  
   const [pokeData, getNumber, getColorSpecies, getLocation] = await Promise.all(
     [getPokemon(id), getLimit(id), getColor(id), getRegion(id)]
   );
