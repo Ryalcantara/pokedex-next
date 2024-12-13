@@ -25,7 +25,7 @@ const PokemonPagination = ({
 }: PokemonPaginationProps) => {
   const router = useRouter();
 
-  const totalPages = getLimit.count ;
+  const totalPages = getLimit.count;
   const validatedPage = Math.max(1, Math.min(currentPage, totalPages));
 
   const handlePageChange = (page: number) => {
@@ -40,15 +40,12 @@ const PokemonPagination = ({
         classNames={{
           wrapper: "gap-1",
           item: "w-8 h-8",
-          cursor: "bg-warning-500",
         }}
         showControls
         total={totalPages}
         initialPage={validatedPage}
         page={validatedPage}
         onChange={handlePageChange}
-        color="warning"
-        size="lg"
         siblings={1}
         boundaries={1}
         variant="light"
